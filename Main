@@ -1,0 +1,25 @@
+public class Main {
+public static void main(String[] args) {
+EBook ebook = new EBook("HUMAN LOST", "Dazai Osamu", 100, 15, ".pdf");
+System.out.println("EBook Title: " + ebook.getTitle());
+System.out.println("EBook Author: " + ebook.getAuthor());
+System.out.println("EBook Price: RM" + ebook.getPrice());
+System.out.println("EBook Quantity: " + ebook.getQuantity());
+System.out.println("EBook File Format: " + ebook.getFileFormat());
+ebook.openBook();
+ebook.downloadBook();
+System.out.println("Is the EBook format valid? " + ebook.validateFormat());
+
+
+    System.out.println();
+
+    PhysicalBook physicalBook = new PhysicalBook("English Text Book", "English Teacher", 70, 10, 1.271);
+    System.out.println("Physical Book Title: " + physicalBook.getTitle());
+    System.out.println("Physical Book Author: " + physicalBook.getAuthor());
+    System.out.println("Physical Book Price: RM" + physicalBook.getPrice());
+    System.out.println("Physical Book Quantity: " + physicalBook.getQuantity());
+    System.out.println("Physical Book Weight: " + physicalBook.getWeight() + "kg");
+    System.out.println("Shipping Cost: RM" + physicalBook.calculateShippingCost());
+    System.out.println("Weight in pounds: " + physicalBook.getWeightInPounds());
+}
+}
