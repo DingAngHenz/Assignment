@@ -1,4 +1,4 @@
-public class PhysicalBook extends Book {
+class PhysicalBook extends Book {
     private double weight;
 
     public PhysicalBook(String title, String author, double price, int quantity, double weight) {
@@ -6,24 +6,32 @@ public class PhysicalBook extends Book {
         this.weight = weight;
     }
 
-    public double calculateShippingCost() {
-        double initialWeight = 500;
-        double initialCost = 4.50;
-        double additionalWeight = weight - initialWeight;
-        int additionalCharge = (int) (Math.ceil(additionalWeight / 250) * 1.00);
-        return initialCost + additionalCharge;
-    }
-
-    public double getWeightInPounds() {
-        return weight / 453.59237;
-    }
-
-    // Getter and setter
+    // Getters and setters
     public double getWeight() {
         return weight;
     }
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public double calculateShippingCost() {
+        double initialWeight = 500;  // in grams
+        double baseCost = 4.50;
+        double additionalCost = 1.00;
+
+        double weightInGrams = weight * 1000;
+        double extraWeight = weightInGrams - initialWeight;
+
+        if (extraWeight > 0) {
+            double extraWeightChunks = Math.ceil(extraWeight / 250);
+            return baseCost + (extraWeightChunks * additionalCost);
+        } else {
+            return baseCost;
+        }
+    }
+
+    public double getWeightInPounds() {
+        return weight * 0.00220462;  
     }
 }
